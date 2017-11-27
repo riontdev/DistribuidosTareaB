@@ -1,3 +1,4 @@
 rpcgen -C -a suma.x
-../MainCode/* .
+cp ../MainCode/* .
 echo 'Proyecto inicializado :)'
+echo 'Run Linux -> make -f Makefile.suma'

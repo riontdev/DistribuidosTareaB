@@ -1,0 +1,5 @@
+suma_server
+suma_client
+suma_server.exe
+suma_client.exe
+*.o

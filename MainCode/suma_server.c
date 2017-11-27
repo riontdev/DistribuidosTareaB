@@ -12,7 +12,7 @@ suma_1_svc(sumandos *argp, struct svc_req *rqstp)
 {
 
 	static int  result;
-
+	srand (time(NULL));
 	/*
 	 * insert server code here
 	 */
@@ -37,8 +37,8 @@ suma_1_svc(sumandos *argp, struct svc_req *rqstp)
 	{
 		for (j = 0; j < LEN; j++)
 		{
-		  M[i][j] = i + j;
-		  N[i][j] = j * 2;
+		  M[i][j] = rand() % LEN;
+		  N[i][j] = rand() % LEN;
 		  R[i][j] = M[i][j] + N[i][j];
 		  printf("%d ", R[i][j]);
 		}

@@ -5,4 +5,5 @@
 \Code/suma_*
 \*.h
 \*.o
+\*Makefile.*
 \.DS_Store

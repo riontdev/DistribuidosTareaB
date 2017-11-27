@@ -11,7 +11,7 @@ void
 programa_suma_1( char* host, int num )
 {
 	CLIENT *clnt;
-	int  *result_1;
+	char * *result_1;
 	sumandos  suma_1_arg;
 	clnt = clnt_create(host, PROGRAMA_SUMA, VERSION_SUMA, "udp");
 	if (clnt == NULL) {
@@ -22,6 +22,8 @@ programa_suma_1( char* host, int num )
 	result_1 = suma_1(&suma_1_arg, clnt);
 	if (result_1 == NULL) {
 		clnt_perror(clnt, "call failed:");
+	} else {
+		printf("Resultado:\n%s\n", result_1);
 	}
 	clnt_destroy( clnt );
 }
@@ -30,7 +32,7 @@ programa_suma_1( char* host, int num )
 main( int argc, char* argv[] )
 {
 	char *host;
-        int num;
+int num;
         if (argc != 3) {
             printf ("usage: %s server_host num1\n", argv[0]);
             exit(1);
@@ -40,5 +42,5 @@ main( int argc, char* argv[] )
             fprintf(stderr, "invalid value: %s\n", argv[2]);
             exit(1);
         }
-	programa_suma_1( host, num);
+        programa_suma_1( host, num );
 }

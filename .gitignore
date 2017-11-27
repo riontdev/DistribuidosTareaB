@@ -1,0 +1,11 @@
+\Code/suma_server
+\Code/suma_client
+\Code/suma_server.c
+\Code/suma_client.c
+\suma_server.exe
+\suma_client.exe
+\suma_clnt.c
+\suma_svc.c
+\suma_xdr.c
+\*.o
+\.DS_Store

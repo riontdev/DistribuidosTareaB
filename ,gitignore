@@ -3,3 +3,4 @@ suma_client
 suma_server.exe
 suma_client.exe
 *.o
+.DS_Store

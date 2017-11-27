@@ -5,14 +5,15 @@
  */
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "suma.h"
 
-int *
+char **
 suma_1_svc(sumandos *argp, struct svc_req *rqstp)
 {
 
-	static int  result;
-	srand (time(NULL));
+	static char * result;
+	srand(time(NULL));
 	/*
 	 * insert server code here
 	 */
@@ -53,6 +54,7 @@ suma_1_svc(sumandos *argp, struct svc_req *rqstp)
 			}
 			printf("\n");
 		}*/
+	asprintf(&result, "Server Found: %d", argp->num);
 	free(M);
 	free(N);
 	free(R);

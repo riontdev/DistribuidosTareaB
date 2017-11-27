@@ -2,5 +2,8 @@ suma_server
 suma_client
 suma_server.exe
 suma_client.exe
+suma_clnt.c
+suma_svc.c
+suma_xdr.c
 *.o
 .DS_Store

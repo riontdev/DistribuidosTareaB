@@ -53,6 +53,8 @@ suma_1_svc(sumandos *argp, struct svc_req *rqstp)
 			}
 			printf("\n");
 		}*/
-
+	free(M);
+	free(N);
+	free(R);
 	return(&result);
 }

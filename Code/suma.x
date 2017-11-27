@@ -5,6 +5,6 @@ struct sumandos
 
 program PROGRAMA_SUMA { 
     version VERSION_SUMA { 
-        int suma (sumandos) = 1; 
+        string suma (sumandos) = 1; 
     } = 1; 
 } = 0x20000001;

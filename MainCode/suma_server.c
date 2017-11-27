@@ -42,6 +42,7 @@ suma_1_svc(sumandos *argp, struct svc_req *rqstp)
 		  N[i][j] = rand() % LEN;
 		  R[i][j] = M[i][j] + N[i][j];
 		  printf("%d ", R[i][j]);
+
 		}
 		printf("\n");
 	}

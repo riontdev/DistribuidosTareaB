@@ -20,10 +20,10 @@ programa_suma_1( char* host, int num )
 	}
 	suma_1_arg.num = num;
 	result_1 = suma_1(&suma_1_arg, clnt);
-	if (result_1 == NULL) {
+	if (result_1 == (char **) NULL) {
 		clnt_perror(clnt, "call failed:");
 	} else {
-		printf("Resultado:\n%s\n", result_1);
+		printf("Resultado:\n%s\n", *result_1);
 	}
 	clnt_destroy( clnt );
 }

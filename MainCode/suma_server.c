@@ -12,7 +12,7 @@ char **
 suma_1_svc(sumandos *argp, struct svc_req *rqstp)
 {
 
-	static char * result;
+	char * result[1024];
 	srand(time(NULL));
 	/*
 	 * insert server code here
@@ -20,7 +20,7 @@ suma_1_svc(sumandos *argp, struct svc_req *rqstp)
 	printf("Server running...\n");
 	int LEN = argp->num;
 	int i=0,j=0;
-	printf("Recibi el numero: %d Creare una matriz de ese tamano \n", LEN);
+	printf("Creare una matriz %dx%d  \n", LEN, LEN);
 	//MATRICES DINAMICAS
 	int **M,**N,**R;
 	//RESERVACION DE ESPACOS EN FILAS
@@ -33,7 +33,14 @@ suma_1_svc(sumandos *argp, struct svc_req *rqstp)
 		N[i] = (int *) malloc (LEN*sizeof(int));
 		R[i] = (int *) malloc (LEN*sizeof(int));
 	}
+	char letras[1000];
+	char caracLen[100];
+	sprintf(caracLen,"%d",LEN);
+	int lenDig = strlen(caracLen);
+	printf("%d Son los digitos\n", lenDig);
+	strcpy(letras,"");
 	//CALCULO y RESULTADO
+		result[0] = (char *) malloc ((((LEN*LEN)*lenDig)+LEN)*sizeof(char));
 	for (i = 0; i < LEN; i++)
 	{
 		for (j = 0; j < LEN; j++)
@@ -42,8 +49,13 @@ suma_1_svc(sumandos *argp, struct svc_req *rqstp)
 		  N[i][j] = rand() % LEN;
 		  R[i][j] = M[i][j] + N[i][j];
 		  printf("%d ", R[i][j]);
-
+		  /*char dig[lenDig*2];
+		  sprintf(dig,"%d",R[i][j]);
+		  strcat(letras, dig);
+		  strcat(letras, " ");*/
+		  asprintf(&result, "%s %d", result[0], R[i][j]);
 		}
+		asprintf(&result, "%s\n", result[0]);
 		printf("\n");
 	}
 	/*
@@ -55,7 +67,6 @@ suma_1_svc(sumandos *argp, struct svc_req *rqstp)
 			}
 			printf("\n");
 		}*/
-	asprintf(&result, "Server Found: %d", argp->num);
 	free(M);
 	free(N);
 	free(R);

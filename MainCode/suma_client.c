@@ -23,7 +23,7 @@ programa_suma_1( char* host, int num )
 	if (result_1 == (char **) NULL) {
 		clnt_perror(clnt, "call failed:");
 	} else {
-		printf("Resultado:\n%s\n", *result_1);
+		printf("Resultado:\n%s", *result_1);
 	}
 	clnt_destroy( clnt );
 }

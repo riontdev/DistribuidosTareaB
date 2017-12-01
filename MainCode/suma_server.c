@@ -12,7 +12,7 @@ char **
 suma_1_svc(sumandos *argp, struct svc_req *rqstp)
 {
 
-	char * result[1024];
+	static char * result;
 	srand(time(NULL));
 	/*
 	 * insert server code here
@@ -40,7 +40,8 @@ suma_1_svc(sumandos *argp, struct svc_req *rqstp)
 	printf("%d Son los digitos\n", lenDig);
 	strcpy(letras,"");
 	//CALCULO y RESULTADO
-		result[0] = (char *) malloc ((((LEN*LEN)*lenDig)+LEN)*sizeof(char));
+		result = (char *) malloc ((3*(((LEN*LEN)*lenDig)+LEN))*sizeof(char));
+		asprintf(&result, "");
 	for (i = 0; i < LEN; i++)
 	{
 		for (j = 0; j < LEN; j++)
@@ -48,16 +49,36 @@ suma_1_svc(sumandos *argp, struct svc_req *rqstp)
 		  M[i][j] = rand() % LEN;
 		  N[i][j] = rand() % LEN;
 		  R[i][j] = M[i][j] + N[i][j];
-		  printf("%d ", R[i][j]);
-		  /*char dig[lenDig*2];
-		  sprintf(dig,"%d",R[i][j]);
-		  strcat(letras, dig);
-		  strcat(letras, " ");*/
-		  asprintf(&result, "%s %d", result[0], R[i][j]);
 		}
-		asprintf(&result, "%s\n", result[0]);
-		printf("\n");
 	}
+	// LLEVAR CALCULO AL BUFFER DE RESULT
+	for (i = 0; i < LEN; i++)
+	{
+		for (j = 0; j < LEN; j++)
+		{
+		  asprintf(&result, "%s %d", result, M[i][j]);
+		}
+		asprintf(&result, "%s\n", result);
+	}
+	asprintf(&result, "%s\n", result);
+	for (i = 0; i < LEN; i++)
+	{
+		for (j = 0; j < LEN; j++)
+		{
+		  asprintf(&result, "%s %d", result, N[i][j]);
+		}
+		asprintf(&result, "%s\n", result);
+	}
+	asprintf(&result, "%s\n", result);
+	for (i = 0; i < LEN; i++)
+	{
+		for (j = 0; j < LEN; j++)
+		{
+		  asprintf(&result, "%s %d", result, R[i][j]);
+		}
+		asprintf(&result, "%s\n", result);
+	}
+	printf("%s\n", result);
 	/*
 		for (i = 0; i < 2; i++)
 		{
